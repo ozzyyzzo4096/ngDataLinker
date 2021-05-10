@@ -134,7 +134,7 @@ All generated headers will always produce data addresses within the range [0x002
 compile and link
 ----------------
 
-Finally, including this header in your code will solve unreferenced data link error while during your main makefile link phase. (build/make)
+Finally, including this header in your code will solve unreferenced data link errors during your main makefile link phase. (build/make)
 
 
 make P Roms
