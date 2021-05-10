@@ -142,7 +142,7 @@ make P Roms
 
 For compatibility reasons it's better to use two P Rom files. 
 
-- 1MB P1 Rom is generated as usual from the main makefile ending with something like the line below :
+- 1MB P1 Rom is generated as usual from the main makefile ending with something like the line below
 
 	@REM Pad program rom
 	objcopy --gap-fill=0x00 --pad-to=0x100000 -R .data -O binary test.o dev_p1.rom
