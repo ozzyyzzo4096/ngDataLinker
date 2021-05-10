@@ -6,7 +6,7 @@ Coded by OzzyOuzo on Feb 11 2021.
 wtf 
 ---
 
-Unleash your Neo.Geo AES/MVS homebrew with 8x time more memory :)
+Unleash your Neo.Geo AES/MVS homebrew with 8x time more P memory :)
 
 
 switch mecanism
