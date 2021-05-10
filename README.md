@@ -13,36 +13,39 @@ switch mecanism
 ---------------
 
 Bank switching enables access to a maximum of 9MB PROM memory.
+
 Linear view such as [0x00100000-0x009fffff] is common place, 
 
 But bank switching mecanism allows only 1MB from 8MB of P2 Rom to be accessible by configuration switch.
 
-The content of P1 Rom generally always sits between range [0x00100000-0x001fffff]
-while 1MB pages from P2 Rom will be alternatively mapped to [0x00200000-0x002fffff]
+The content of P1 Rom generally always sits between range [0x00100000-0x001fffff].
+While 1MB pages from P2 Rom will be alternatively mapped to [0x00200000-0x002fffff].
 
 selecting the P Roms configuration is done by writing a 16b word at address : 0x2ffff0
 
 code:
-void reSetSpriteBank(u16 bank_)
-{
-	(*((u16*)0x2ffff0)) = bank_;
-}
+
+	void reSetSpriteBank(u16 bank_)
+	{
+		(*((u16*)0x2ffff0)) = bank_;
+	}
 
 configurations for a 8MB P2 Rom size (only 3bits are used to describe bank config) :
 
-(first 1MB of P2 Rom is mapped at 0x200000 which is default configuration)
-bank_ = 0 : (P1)-(P2-0) from memory range (0x100000)-(0x200000-0x2fffff) (default)
+first 1MB of P2 Rom is mapped at 0x200000 which is default configuration
 
-(second 1MB page from P2 Rom starting at linear address 0x300000 is mapped at address 0x200000)
-bank_ = 1 : (P1)-(P2-1) from memory range (0x100000)-(0x300000-0x3fffff) 
+	bank_ = 0 : (P1)-(P2-0) from memory range (0x100000)-(0x200000-0x2fffff) (default)
 
-(third 1MB page from P2 Rom starting at linear address 0x400000 is mapped at address 0x200000)
-bank_ = 2 : (P1)-(P2-2) from memory range (0x100000)-(0x400000-0x4fffff) 
+second 1MB page from P2 Rom starting at linear address 0x300000 is mapped at address 0x200000
+	bank_ = 1 : (P1)-(P2-1) from memory range (0x100000)-(0x300000-0x3fffff) 
 
-(etc etc etc)
-bank_ = 3 : (P1)-(P2-3) from memory range (0x100000)-(0x500000-0x5fffff) 
-....
-bank_ = 7 : (P1)-(P2-7) from memory range (0x100000)-(0x900000-0x9fffff) 
+third 1MB page from P2 Rom starting at linear address 0x400000 is mapped at address 0x200000
+	bank_ = 2 : (P1)-(P2-2) from memory range (0x100000)-(0x400000-0x4fffff) 
+
+etc etc etc
+	bank_ = 3 : (P1)-(P2-3) from memory range (0x100000)-(0x500000-0x5fffff) 
+	....
+	bank_ = 7 : (P1)-(P2-7) from memory range (0x100000)-(0x900000-0x9fffff) 
 
 example
 -------
